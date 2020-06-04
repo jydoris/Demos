@@ -12,3 +12,9 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_hello(JNIEnv *env,jobject obj){
     //recordA.showRecord();
     return;
 }
+
+JNIEXPORT void JNICALL Java_com_HelloWorld_setRecordValue
+  (JNIEnv *env, jobject obj, jint value){
+      recordA.setValue(value);
+      return;
+  }

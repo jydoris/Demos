@@ -8,3 +8,8 @@ void Record::init(){
 void Record::showRecord(){
     std::cout << m_value << std::endl;
 }
+
+void Record::setValue(int value){
+    m_value = value;
+    std::cout<<"setValue to "<< value << std::endl;
+}

@@ -2,6 +2,7 @@ package com;
 public class HelloWorld {
 
     public native void hello();
+    public native void setRecordValue(int value);
 
     static {
         //设置查找路径为当前项目路径
@@ -11,6 +12,8 @@ public class HelloWorld {
     }
 
     public static void main(String[] args) {
-        new com.HelloWorld().hello();
+        HelloWorld myWorld = new com.HelloWorld();
+        myWorld.hello();
+        myWorld.setRecordValue(100);
     }
 }

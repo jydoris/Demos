@@ -4,6 +4,7 @@ class Record{
 public:
     void init();
     void showRecord();
+    void setValue(int value);
 private:
     int m_value;
 };

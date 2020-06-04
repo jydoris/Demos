@@ -15,6 +15,14 @@ extern "C" {
 JNIEXPORT void JNICALL Java_com_HelloWorld_hello
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    setRecordValue
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_com_HelloWorld_setRecordValue
+  (JNIEnv *, jobject, jint);
+
 #ifdef __cplusplus
 }
 #endif
