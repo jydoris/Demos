@@ -31,6 +31,14 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_setRecordValue
 JNIEXPORT jint JNICALL Java_com_HelloWorld_getRecordValue
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    queryJobViaName
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_HelloWorld_queryJobViaName
+  (JNIEnv *, jobject, jstring);
+
 #ifdef __cplusplus
 }
 #endif

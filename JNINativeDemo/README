@@ -4,7 +4,8 @@ commands:
 javac -h include com/HelloWorld.java
 
 //step2: compile C++ and generate library
-g++ -dynamiclib -I"$JAVA_HOME/include" HelloWorld.cpp record.cpp -o nativelib/libhello.jnilib
+//g++ -dynamiclib -I"$JAVA_HOME/include" HelloWorld.cpp record.cpp -o nativelib/libhello.jnilib
+  g++ -std=c++11  -dynamiclib -I"$JAVA_HOME/include" HelloWorld.cpp record.cpp -o nativelib/libhello.jnilib
 
 //step3: run java program
 java -Djava.library.path="nativelib" com.HelloWorld
