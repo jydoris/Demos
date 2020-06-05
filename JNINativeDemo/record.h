@@ -5,6 +5,7 @@ public:
     void init();
     void showRecord();
     void setValue(int value);
+    int getValue();
 private:
     int m_value;
 };

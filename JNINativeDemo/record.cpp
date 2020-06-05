@@ -13,3 +13,7 @@ void Record::setValue(int value){
     m_value = value;
     std::cout<<"setValue to "<< value << std::endl;
 }
+
+int Record::getValue(){
+    return m_value;
+}

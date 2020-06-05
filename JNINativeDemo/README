@@ -1,10 +1,10 @@
 commands:
 
-//compile java and generate head file
+//step1: compile java and generate head file
 javac -h include com/HelloWorld.java
 
-//compile C++ and generate library
+//step2: compile C++ and generate library
 g++ -dynamiclib -I"$JAVA_HOME/include" HelloWorld.cpp record.cpp -o nativelib/libhello.jnilib
 
-//run java program
+//step3: run java program
 java -Djava.library.path="nativelib" com.HelloWorld

@@ -23,6 +23,14 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_hello
 JNIEXPORT void JNICALL Java_com_HelloWorld_setRecordValue
   (JNIEnv *, jobject, jint);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    getRecordValue
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_HelloWorld_getRecordValue
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
