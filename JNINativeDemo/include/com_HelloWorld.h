@@ -39,6 +39,14 @@ JNIEXPORT jint JNICALL Java_com_HelloWorld_getRecordValue
 JNIEXPORT jstring JNICALL Java_com_HelloWorld_queryJobViaName
   (JNIEnv *, jobject, jstring);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    setAges
+ * Signature: ([I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_HelloWorld_setAges
+  (JNIEnv *, jobject, jintArray);
+
 #ifdef __cplusplus
 }
 #endif

@@ -42,3 +42,21 @@ JNIEXPORT jstring JNICALL Java_com_HelloWorld_queryJobViaName
       //Step3:convert c++ string to c-string, then to JNI String and return result to java
       return env->NewStringUTF(job.c_str());
   }
+
+JNIEXPORT jstring JNICALL Java_com_HelloWorld_setAges
+  (JNIEnv *env, jobject obj, jintArray JNIAges){
+    //Step1: convert incoming JNI JNIAges to c's jint[]
+    jint *inCArray = env->GetIntArrayElements(JNIAges, NULL);
+    if(nullptr == inCArray)
+      return env->NewStringUTF("Fail in bridge.");
+    
+    //Step2: perform intent functions
+    std::vector<int> tmpAges;
+    jsize length = env->GetArrayLength(JNIAges);
+    tmpAges.resize(length);
+    std::memcpy(tmpAges.data(), inCArray, length * sizeof(int));
+    if(!recordA.setAge(tmpAges))
+      return env->NewStringUTF("Fail inner Record."); 
+      
+    return env->NewStringUTF("Sucess!"); 
+  }

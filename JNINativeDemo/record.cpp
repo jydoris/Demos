@@ -33,3 +33,15 @@ std::string Record::queryJob(std::string name){
     }
     return result;
 }
+
+bool Record::setAge(std::vector<int> &ages){
+    int len = ages.size();
+    m_age.resize(len);
+    std::memcpy(m_age.data(), ages.data(), len * sizeof(int));
+
+    std::cout << "-----------show Age inner------------\n";
+    for(auto x : m_age)
+        std::cout << x << " ";
+    std::cout << std::endl;
+    return true;
+}

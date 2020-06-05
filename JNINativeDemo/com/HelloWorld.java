@@ -5,6 +5,8 @@ public class HelloWorld {
     public native void setRecordValue(int value);
     public native int getRecordValue();
     public native String queryJobViaName(String name);
+    public native String setAges(int[] ages);
+
     static {
         //设置查找路径为当前项目路径
         System.setProperty("java.library.path", "../nativelib");
@@ -21,5 +23,10 @@ public class HelloWorld {
         System.out.println("--------------query job--------------");
         String name = "Mary";
         System.out.println("In java, get " + name + "'s job is: "+ myWorld.queryJobViaName(name));
+
+        System.out.println("--------------set age--------------");
+        int[] ages = {23, 34, 54};
+        String result = myWorld.setAges(ages);
+        System.out.println(result);
     }
 }
