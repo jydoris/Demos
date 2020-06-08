@@ -4,6 +4,7 @@ public class HelloWorld {
     private int ID = 0;
     private String job = "";
     private String name = "Mary";
+    private static double happyScore = 80.0;
 
     public native void hello();
     public native void setRecordValue(int value);
@@ -12,6 +13,7 @@ public class HelloWorld {
     public native String setAges(int[] ages);
 
     public native void modifyDataViaName(String name);
+    public native void modifyStaticHappyScore();
     
 
     static {
@@ -40,5 +42,12 @@ public class HelloWorld {
         System.out.println("before modify, name: " + myWorld.name + ", ID: " + myWorld.ID + ", Job: " + myWorld.job);
         myWorld.modifyDataViaName(myWorld.name);
         System.out.println("after modify, name: " + myWorld.name + ", ID: " + myWorld.ID + ", Job: " + myWorld.job);
+
+        System.out.println("--------------be happier--------------");
+        System.out.println("before modify, happy score: " + myWorld.happyScore);
+        myWorld.modifyStaticHappyScore();
+        System.out.println("after modify, happy score: " + myWorld.happyScore);
+
+
     }
 }

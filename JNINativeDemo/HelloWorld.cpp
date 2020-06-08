@@ -99,3 +99,18 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
     env->SetObjectField(obj, fidJob, jobInfo);
 
   }
+
+
+  JNIEXPORT void JNICALL Java_com_HelloWorld_modifyStaticHappyScore
+  (JNIEnv *env, jobject obj){
+    jclass tClas = env->GetObjectClass(obj);
+
+    jfieldID happyFiled = env->GetStaticFieldID(tClas, "happyScore", "D");
+    if(nullptr == happyFiled) 
+      return;
+    jdouble JNIScore = env->GetStaticDoubleField(tClas, happyFiled);
+    std::cout << "Native layer got the happy Score: " << JNIScore << std::endl;
+
+    JNIScore *= 2;
+    env->SetStaticDoubleField(tClas, happyFiled, JNIScore);
+  }

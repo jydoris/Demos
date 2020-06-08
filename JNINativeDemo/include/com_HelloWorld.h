@@ -55,6 +55,14 @@ JNIEXPORT jstring JNICALL Java_com_HelloWorld_setAges
 JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
   (JNIEnv *, jobject, jstring);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    modifyStaticHappyScore
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_HelloWorld_modifyStaticHappyScore
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
