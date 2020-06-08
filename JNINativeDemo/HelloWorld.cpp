@@ -114,3 +114,17 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
     JNIScore *= 2;
     env->SetStaticDoubleField(tClas, happyFiled, JNIScore);
   }
+
+
+  JNIEXPORT void JNICALL Java_com_HelloWorld_nativeCallBack
+  (JNIEnv *env, jobject obj){
+    jclass tclas = env->GetObjectClass(obj);
+    jmethodID mID = env->GetMethodID(tclas, "callBack", "(Ljava/lang/String;)V");
+    if(nullptr == mID)
+      return;
+    
+    std::string message = "Thank you!";
+    jstring JNImessage = env->NewStringUTF(message.c_str());
+    env->CallObjectMethod(obj, mID, JNImessage);
+    
+  }

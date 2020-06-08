@@ -14,7 +14,11 @@ public class HelloWorld {
 
     public native void modifyDataViaName(String name);
     public native void modifyStaticHappyScore();
-    
+    public native void nativeCallBack();
+
+    private void callBack(String message){
+        System.out.println("Java got the message: " + message);
+    }
 
     static {
         //设置查找路径为当前项目路径
@@ -48,6 +52,7 @@ public class HelloWorld {
         myWorld.modifyStaticHappyScore();
         System.out.println("after modify, happy score: " + myWorld.happyScore);
 
-
+        System.out.println("--------------calling back--------------");
+        myWorld.nativeCallBack();
     }
 }

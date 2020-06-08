@@ -63,6 +63,14 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
 JNIEXPORT void JNICALL Java_com_HelloWorld_modifyStaticHappyScore
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    nativeCallBack
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_HelloWorld_nativeCallBack
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
