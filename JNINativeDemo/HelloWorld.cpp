@@ -60,3 +60,42 @@ JNIEXPORT jstring JNICALL Java_com_HelloWorld_setAges
       
     return env->NewStringUTF("Sucess!"); 
   }
+
+JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
+  (JNIEnv *env, jobject obj, jstring JNIName){
+    const char* inName = env->GetStringUTFChars(JNIName, NULL);
+    if(nullptr == inName){
+      std::cout << "Cannot convert in parameter to proper format(JNI string to c-char).\n";
+      return;
+    }
+
+    int ID = recordA.getValue();
+    std::string job = recordA.queryJob(inName); 
+    env->ReleaseStringUTFChars(JNIName, inName);
+
+    // -----set the ID------
+    //Step1: get a reference to this object's class 
+    jclass thisClass = env->GetObjectClass(obj);
+
+    //Step2: get the Filed ID of the instance variable "ID"
+    jfieldID fidID = env->GetFieldID(thisClass, "ID", "I");
+    if (nullptr == fidID)
+      return;
+    
+    //Step3: get the int given the Filed ID (could escape this step)
+    jint num = env->GetIntField(obj, fidID);
+    
+    //Step4: set the num
+    num = ID;
+    env->SetIntField(obj, fidID, num);
+
+
+    // -----set the Job------
+    jfieldID fidJob = env->GetFieldID(thisClass, "job", "Ljava/lang/String;");
+    if(nullptr == fidJob)
+      return;
+    jstring jobInfo = (jstring)env->GetObjectField(obj, fidJob);
+    jobInfo = env->NewStringUTF(job.c_str());
+    env->SetObjectField(obj, fidJob, jobInfo);
+
+  }
