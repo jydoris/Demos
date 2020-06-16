@@ -128,3 +128,18 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
     env->CallVoidMethod(obj, mID, JNImessage);
 
   }
+
+  JNIEXPORT jobject JNICALL Java_com_HelloWorld_getIntergerObject
+  (JNIEnv *env, jobject obj, jint JNIInteger){
+    //Step1: get a class instance of Interger
+    jclass cls = env->FindClass("java/lang/Integer");
+
+    jmethodID midInit = env->GetMethodID(cls, "<init>", "(I)V");
+    if (nullptr == midInit)
+    {
+      return NULL;
+    }
+    jobject newObj = env->NewObject(cls, midInit, JNIInteger);
+
+    return newObj;
+  }

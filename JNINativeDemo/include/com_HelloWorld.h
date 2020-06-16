@@ -71,6 +71,14 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyStaticHappyScore
 JNIEXPORT void JNICALL Java_com_HelloWorld_nativeCallBack
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_HelloWorld
+ * Method:    getIntergerObject
+ * Signature: (I)I
+ */
+JNIEXPORT jobject JNICALL Java_com_HelloWorld_getIntergerObject
+  (JNIEnv *, jobject, jint);
+
 #ifdef __cplusplus
 }
 #endif

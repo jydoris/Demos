@@ -16,6 +16,8 @@ public class HelloWorld {
     public native void modifyStaticHappyScore();
     public native void nativeCallBack();
 
+    public native Integer getIntergerObject(int number);
+
     private void callBack(String message){
         System.out.println("Java got the message: " + message);
     }
@@ -54,5 +56,8 @@ public class HelloWorld {
 
         System.out.println("--------------calling back--------------");
         myWorld.nativeCallBack();
+
+        System.out.println("--------------get Interger object from native--------------");
+        System.out.println("Get the integer: " + myWorld.getIntergerObject(666));
     }
 }
