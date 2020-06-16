@@ -81,6 +81,14 @@ JNIEXPORT jobject JNICALL Java_com_HelloWorld_getIntergerObject
 
 /*
  * Class:     com_HelloWorld
+ * Method:    getAnotherInteger
+ * Signature: (I)Ljava/lang/Integer;
+ */
+JNIEXPORT jobject JNICALL Java_com_HelloWorld_getAnotherInteger
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     com_HelloWorld
  * Method:    sumAndAverage
  * Signature: ([Ljava/lang/Integer;)[Ljava/lang/Double;
  */

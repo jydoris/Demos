@@ -19,6 +19,7 @@ public class HelloWorld {
     public native void nativeCallBack();
 
     public native Integer getIntergerObject(int number);
+    public native Integer getAnotherInteger(int number);
     public native Double[] sumAndAverage(Integer[] numbers);
 
     private void callBack(String message){
@@ -62,6 +63,8 @@ public class HelloWorld {
 
         System.out.println("--------------get Interger object from native--------------");
         System.out.println("Get the integer: " + myWorld.getIntergerObject(666));
+        System.out.println("--------------get another Interger object from native--------------");
+        System.out.println("Get the integer: " + myWorld.getAnotherInteger(999));
 
         System.out.println("--------------get Interger object from native--------------");
         Integer[] numbers = {11, 22, 33};

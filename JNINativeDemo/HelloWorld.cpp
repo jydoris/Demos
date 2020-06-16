@@ -5,6 +5,36 @@
 
 Record  recordA;
 
+//Global reference tp java class "java.lang.Integer"
+static jclass classInteger;
+static jmethodID midIntegerInit;
+
+
+jobject getInteger(JNIEnv *env, jobject obj, jint JNIInteger){
+    if(nullptr == classInteger){
+      std::cout << "Find java.lang.Integer.\n";
+      //get a local reference
+      jclass classIntegerLocal = env->FindClass("java/lang/Integer");
+      classInteger = (jclass)env->NewGlobalRef(classIntegerLocal);
+
+      //free local reference
+      env->DeleteLocalRef(classIntegerLocal);
+    }
+    
+    if(nullptr == classInteger) return NULL;
+
+    if(nullptr == midIntegerInit){
+      std::cout << "Get method ID for java.lang.Integer's construction.\n";
+      // jmethodID and jfieldID are not jobject, and cannot create global reference
+      midIntegerInit = env->GetMethodID(classInteger, "<init>", "(I)V");
+    }
+
+    if (nullptr == midIntegerInit) return NULL;
+    
+    jobject newObj = env->NewObject(classInteger, midIntegerInit, JNIInteger);
+    return newObj;
+  }
+
 JNIEXPORT void JNICALL Java_com_HelloWorld_hello(JNIEnv *env,jobject obj){
     printf("Hello World!\n");
     recordA.init();
@@ -131,17 +161,12 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
 
   JNIEXPORT jobject JNICALL Java_com_HelloWorld_getIntergerObject
   (JNIEnv *env, jobject obj, jint JNIInteger){
-    //Step1: get a class instance of Interger
-    jclass cls = env->FindClass("java/lang/Integer");
+   return getInteger(env, obj, JNIInteger);
+  }
 
-    jmethodID midInit = env->GetMethodID(cls, "<init>", "(I)V");
-    if (nullptr == midInit)
-    {
-      return NULL;
-    }
-    jobject newObj = env->NewObject(cls, midInit, JNIInteger);
-
-    return newObj;
+  JNIEXPORT jobject JNICALL Java_com_HelloWorld_getAnotherInteger
+   (JNIEnv *env, jobject obj, jint JNIInteger){
+   return getInteger(env, obj, JNIInteger);
   }
 
   JNIEXPORT jobjectArray JNICALL Java_com_HelloWorld_sumAndAverage
