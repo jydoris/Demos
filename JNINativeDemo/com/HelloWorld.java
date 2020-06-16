@@ -1,4 +1,6 @@
 package com;
+import java.util.ArrayList;
+import java.lang.Object;
 public class HelloWorld {
 
     private int ID = 0;
@@ -17,6 +19,7 @@ public class HelloWorld {
     public native void nativeCallBack();
 
     public native Integer getIntergerObject(int number);
+    public native Double[] sumAndAverage(Integer[] numbers);
 
     private void callBack(String message){
         System.out.println("Java got the message: " + message);
@@ -59,5 +62,11 @@ public class HelloWorld {
 
         System.out.println("--------------get Interger object from native--------------");
         System.out.println("Get the integer: " + myWorld.getIntergerObject(666));
+
+        System.out.println("--------------get Interger object from native--------------");
+        Integer[] numbers = {11, 22, 33};
+        Double[] results = myWorld.sumAndAverage(numbers);
+        System.out.println("In java, the sum is " + results[0]);
+        System.out.println("In java, the average is " + results[1]);
     }
 }

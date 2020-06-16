@@ -74,10 +74,18 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_nativeCallBack
 /*
  * Class:     com_HelloWorld
  * Method:    getIntergerObject
- * Signature: (I)I
+ * Signature: (I)Ljava/lang/Integer;
  */
 JNIEXPORT jobject JNICALL Java_com_HelloWorld_getIntergerObject
   (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     com_HelloWorld
+ * Method:    sumAndAverage
+ * Signature: ([Ljava/lang/Integer;)[Ljava/lang/Double;
+ */
+JNIEXPORT jobjectArray JNICALL Java_com_HelloWorld_sumAndAverage
+  (JNIEnv *, jobject, jobjectArray);
 
 #ifdef __cplusplus
 }

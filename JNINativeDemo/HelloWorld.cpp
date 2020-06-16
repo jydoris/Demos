@@ -143,3 +143,41 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
 
     return newObj;
   }
+
+  JNIEXPORT jobjectArray JNICALL Java_com_HelloWorld_sumAndAverage
+  (JNIEnv *env, jobject obj, jobjectArray inJNIArray){
+    jclass cls = env->FindClass("java/lang/Integer");
+    jmethodID midInteger = env->GetMethodID(cls, "intValue", "()I");
+    if (nullptr == midInteger)
+    {
+      return NULL;
+    }
+
+    jsize length = env->GetArrayLength(inJNIArray);
+    jint sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+      jobject objInteger = env->GetObjectArrayElement(inJNIArray, i);
+      if(nullptr == objInteger) return NULL;
+      jint value = env->CallIntMethod(objInteger, midInteger);
+      sum += value;
+    }
+    
+    double average = (double) sum / length;
+
+    
+    jclass classDouble = env->FindClass("java/lang/Double");
+    //Allocate a objectArray 
+    jobjectArray outJNIArray = env->NewObjectArray(2, classDouble, NULL);
+    jmethodID midDoubleInit = env->GetMethodID(classDouble, "<init>", "(D)V");
+    if (nullptr == midDoubleInit)
+    {
+      return NULL;
+    }
+    jobject objSum = env->NewObject(classDouble, midDoubleInit, (double)sum);
+    jobject objAvg = env->NewObject(classDouble, midDoubleInit, (double)average);
+
+    env->SetObjectArrayElement(outJNIArray, 0, objSum);
+    env->SetObjectArrayElement(outJNIArray, 1, objAvg);
+    return outJNIArray;
+  }
