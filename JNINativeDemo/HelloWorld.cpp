@@ -125,6 +125,6 @@ JNIEXPORT void JNICALL Java_com_HelloWorld_modifyDataViaName
     
     std::string message = "Thank you!";
     jstring JNImessage = env->NewStringUTF(message.c_str());
-    env->CallObjectMethod(obj, mID, JNImessage);
-    
+    env->CallVoidMethod(obj, mID, JNImessage);
+
   }
